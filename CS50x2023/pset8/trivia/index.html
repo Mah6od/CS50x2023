@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // making questions
+            document.addEventListener('DOMContentLoaded', function() {
+
+                // When click  on correct answer button, set the green color
+                let correct = document.querySelector('.correct');
+                correct.addEventListener('click', function(event) {
+                    correct.style.backgroundColor = 'green';
+                    document.querySelector('#feedback1').innerHTML = 'Correct!';
+                    });
+
+                // When click  on incorrect answer button, set the red color
+                let incorrects = document.querySelectorAll('.incorrect');
+                for(let i = 0; i < incorrects.length; i++)
+                {
+                    incorrects[i].addEventListener('click', function(event) {
+                    incorrects[i].style.backgroundColor = 'red';
+                    document.querySelector('#feedback1').innerHTML = 'Incorrect';
+                    });
+                }
+
+                document.querySelector('#check').addEventListener('click', function(){
+                   let input = document.querySelector('input');
+                   if(input.value == '1991'){
+                       input.style.backgroundColor = 'green';
+                       document.querySelector('#feedback2').innerHTML = 'Correct!';
+                   } else {
+                       input.style.backgroundColor = 'red';
+                       document.querySelector('#feedback2').innerHTML = 'Incorrect';
+                   }
+                });
+
+            });
+
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- question choice -->
+                <h3>who first fesigned Python?</h3>
+                <button class = "incorrect">Ada Lovelace</button>
+                <button class = "incorrect">Alan Turing</button>
+                <button class = "incorrect">Bill Gates</button>
+                <button class = "correct">Guido van Rossum</button>
+
+                <p id = "feedback1"></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- question response -->
+                <h3>When was Python founded?</h3>
+                <input type = 'text'></input>
+                <button id = "check">Check Answer</button>
+
+                <p id = "feedback2"></p>
+            </div>
+        </div>
+    </body>
+</html>
